@@ -1,6 +1,6 @@
 ﻿namespace MotoEgzaminM2.Data.DAL.Repositories
 {
-    internal interface IEduMaterialReviewRepository
+    public interface IEduMaterialReviewRepository
     {
     }
 }
