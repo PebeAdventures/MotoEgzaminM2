@@ -4,6 +4,6 @@ namespace MotoEgzaminM2.Services.Interfaces
 {
     public interface IAuthorService
     {
-        Task<IEnumerable<AuthorReadDTO>> GetAllReviews();
+        Task<IEnumerable<AuthorReadDTO>> GetAllAuthors();
     }
 }

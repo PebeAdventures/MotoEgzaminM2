@@ -13,7 +13,7 @@ namespace MotoEgzaminM2.Services
             _unitOfWork = unitOfWork;
         }
 
-        public Task<IEnumerable<AuthorReadDTO>> GetAllReviews()
+        public Task<IEnumerable<AuthorReadDTO>> GetAllAuthors()
         {
             throw new NotImplementedException();
         }

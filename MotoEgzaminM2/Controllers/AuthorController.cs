@@ -24,7 +24,7 @@ namespace MotoEgzaminM2.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<AuthorReadDTO>>> GetAllReviews()
         {
-            var authors = await authorService.GetAllReviews();
+            var authors = await authorService.GetAllAuthors();
 
             return Ok(authors);
         }
