@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MotoEgzaminM2.DTO.EduMaterial;
 using MotoEgzaminM2.Services.Interfaces;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -16,36 +17,65 @@ namespace MotoEgzaminM2.Controllers
             this.eduMaterialService = eduMaterialService;
         }
 
+
+        //USER
+        //ADMIN
         // GET: api/<EduMaterialController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<ActionResult<IEnumerable<EduMaterialReadDTO>>> GetAllMaterials()
         {
-            return new string[] { "value1", "value2" };
+            var materials = await eduMaterialService.GetAllmaterials();
+
+            return Ok(materials);
         }
 
+        //ADMIN
         // GET api/<EduMaterialController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<ActionResult<IEnumerable<EduMaterialReadDTO>>> GetMaterialByAuthorWithRate(int authorId)
         {
-            return "value";
+            var reviews = await eduMaterialService.GetAllMaterialsFromAuthorWithScoreAbove5(authorId);
+
+
+            return Ok(reviews);
         }
 
-        // POST api/<EduMaterialController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        //ADMIN
+        // GET api/<EduMaterialController>/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<IEnumerable<EduMaterialReadDTO>>> GetMaterialsByType(int typeId)
         {
+            var reviews = await eduMaterialService.GetAllMaterialsFromType(typeId);
+
+
+            return Ok(reviews);
         }
 
+        //ADMIN
         // PUT api/<EduMaterialController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<IActionResult> EditMaterial(int id, [FromBody] EduMaterialUpdateDTO materialUpdateDTO)
         {
+            await eduMaterialService.EditMaterial(id, materialUpdateDTO);
+            return NoContent();
+
+        }
+
+        //ADMIN
+        // POST api/<EduMaterialController>
+        [HttpPost]
+        public async Task<IActionResult> CreateMaterial(int id, [FromBody] EduMaterialCreateDTO createDTO)
+        {
+            await eduMaterialService.CreateMaterial(createDTO);
+            return NoContent();
         }
 
         // DELETE api/<EduMaterialController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<IActionResult> DeleteMaterial(int id)
         {
+            await eduMaterialService.DeleteMaterial(id);
+            return NoContent();
         }
     }
 }
