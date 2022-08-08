@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotoEgzaminM2", "MotoEgzaminM2\MotoEgzaminM2.csproj", "{DDA44F55-25C0-47BE-8B17-2EC773E44634}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MotoEgzaminM2", "MotoEgzaminM2\MotoEgzaminM2.csproj", "{DDA44F55-25C0-47BE-8B17-2EC773E44634}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotoEgzaminM2.Data", "MotoEgzaminM2.Data\MotoEgzaminM2.Data.csproj", "{EBE3658C-9A9A-4C70-8D5B-76189C01A960}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MotoEgzaminM2.Data", "MotoEgzaminM2.Data\MotoEgzaminM2.Data.csproj", "{EBE3658C-9A9A-4C70-8D5B-76189C01A960}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
