@@ -1,83 +1,43 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace MotoEgzaminM2.Controllers
 {
-    public class EduMaterialTypeController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class EduMaterialTypeController : ControllerBase
     {
-        // GET: EduMaterialTypeController
-        public ActionResult Index()
+        // GET: api/<EduMaterialTypeController>
+        [HttpGet]
+        public IEnumerable<string> Get()
         {
-            return View();
+            return new string[] { "value1", "value2" };
         }
 
-        // GET: EduMaterialTypeController/Details/5
-        public ActionResult Details(int id)
+        // GET api/<EduMaterialTypeController>/5
+        [HttpGet("{id}")]
+        public string Get(int id)
         {
-            return View();
+            return "value";
         }
 
-        // GET: EduMaterialTypeController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: EduMaterialTypeController/Create
+        // POST api/<EduMaterialTypeController>
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public void Post([FromBody] string value)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
         }
 
-        // GET: EduMaterialTypeController/Edit/5
-        public ActionResult Edit(int id)
+        // PUT api/<EduMaterialTypeController>/5
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody] string value)
         {
-            return View();
         }
 
-        // POST: EduMaterialTypeController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        // DELETE api/<EduMaterialTypeController>/5
+        [HttpDelete("{id}")]
+        public void Delete(int id)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: EduMaterialTypeController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: EduMaterialTypeController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
         }
     }
 }
