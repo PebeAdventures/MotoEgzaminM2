@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+using MotoEgzaminM2.Data.Context;
 using MotoEgzaminM2.Data.DAL.Interfaces;
 using MotoEgzaminM2.Data.DAL.Repositories;
 
@@ -7,6 +9,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddDbContext<MotoEgzaminM2Context>(builder =>
+{
+    builder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=MotoEgzaminM2;Integrated Security=True");
+});
 builder.Services.AddScoped<IEduMaterialRepository, EduMaterialRepository>();
 builder.Services.AddScoped<IEduMaterialReviewRepository, EduMaterialReviewRepository>();
 builder.Services.AddScoped<IEduMaterialTypeRepository, EduMaterialTypeRepository>();
