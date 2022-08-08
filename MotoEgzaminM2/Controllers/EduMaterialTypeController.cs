@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MotoEgzaminM2.Services.Interfaces;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -8,6 +9,14 @@ namespace MotoEgzaminM2.Controllers
     [ApiController]
     public class EduMaterialTypeController : ControllerBase
     {
+
+        private readonly IEduMaterialTypeService eduMaterialTypeService;
+
+        public EduMaterialTypeController(IEduMaterialTypeService eduMaterialTypeService)
+        {
+            this.eduMaterialTypeService = eduMaterialTypeService;
+        }
+
         // GET: api/<EduMaterialTypeController>
         [HttpGet]
         public IEnumerable<string> Get()

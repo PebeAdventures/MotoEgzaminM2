@@ -1,7 +1,10 @@
 using Microsoft.EntityFrameworkCore;
+using MotoEgzaminM2.Data;
 using MotoEgzaminM2.Data.Context;
 using MotoEgzaminM2.Data.DAL.Interfaces;
 using MotoEgzaminM2.Data.DAL.Repositories;
+using MotoEgzaminM2.Services;
+using MotoEgzaminM2.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,10 +16,15 @@ builder.Services.AddDbContext<MotoEgzaminM2Context>(builder =>
 {
     builder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=MotoEgzaminM2;Integrated Security=True");
 });
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IEduMaterialRepository, EduMaterialRepository>();
 builder.Services.AddScoped<IEduMaterialReviewRepository, EduMaterialReviewRepository>();
 builder.Services.AddScoped<IEduMaterialTypeRepository, EduMaterialTypeRepository>();
 builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
+builder.Services.AddScoped<IEduMaterialService, EduMaterialService>();
+builder.Services.AddScoped<IEduMaterialReviewService, EduMaterialReviewService>();
+builder.Services.AddScoped<IEduMaterialTypeService, EduMaterialTypeService>();
+builder.Services.AddScoped<IAuthorService, AuthorService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
