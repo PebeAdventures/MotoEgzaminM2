@@ -24,8 +24,10 @@ namespace MotoEgzaminM2.Data.DAL.Repositories
                 .ToListAsync();
         }
 
-
-
+        public async Task<List<EduMaterial>> GetAllMaterialsAsync()
+        {
+            return await _context.EduMaterials.Include(x => x.Type).Include(x => x.Author).ToListAsync();
+        }
     }
 
 }

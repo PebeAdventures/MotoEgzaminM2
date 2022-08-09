@@ -1,9 +1,10 @@
-﻿namespace MotoEgzaminM2.Services.Interfaces
-{
-    public interface IEduMaterialTypeService
-    {
-        public Task<List<EduMaterialTypeDTO>> findAll();
+﻿using MotoEgzaminM2.Data.Entities;
 
-        public Task<List<EduMaterialTypeDTO>> findByName(string name);
+namespace MotoEgzaminM2.Data.DAL.Repositories
+{
+    public interface IEduMaterialTypeRepository
+    {
+        Task<List<EduMaterialType>> GetAllTypesAsync();
+
     }
 }

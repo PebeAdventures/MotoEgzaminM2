@@ -10,6 +10,9 @@ namespace MotoEgzaminM2.Mapper
         {
             CreateMap<EduMaterial, EduMaterialWithRatedAuthorReadDTO>()
                 .ForMember(x => x.AuthorName, opt => opt.MapFrom(x => x.Author.AuthorName));
+            CreateMap<EduMaterial, EduMaterialReadDTO>()
+                .ForMember(x => x.TypeName, opt => opt.MapFrom(x => x.Type.Name))
+                .ForMember(x => x.AuthorName, opt => opt.MapFrom(x => x.Author.AuthorName));
 
         }
     }
