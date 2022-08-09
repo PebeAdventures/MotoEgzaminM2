@@ -7,5 +7,7 @@
         public string Description { get; set; }
 
         public int NumberOfMaterials { get; set; }
+
+        public IEnumerable<EduMaterial> Materials { get; set; }
     }
 }

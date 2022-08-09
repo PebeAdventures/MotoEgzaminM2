@@ -15,6 +15,7 @@ namespace MotoEgzaminM2.Services
 
         public Task<IEnumerable<AuthorReadDTO>> GetAllAuthors()
         {
+
             throw new NotImplementedException();
         }
     }
