@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Cors;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using MotoEgzaminM2.DTO.Author;
 using MotoEgzaminM2.Services.Interfaces;
@@ -19,17 +20,16 @@ namespace MotoEgzaminM2.Controllers
         {
             this.authorService = authorService;
         }
-
+        //
 
         //USER
         //ADMIN
         // GET: api/<AuthorController>
         [SwaggerOperation(Summary = "Get all Authors with his material list")]
-        [HttpGet]
+        [HttpGet, Authorize(Roles = "Admin")]
         public async Task<ActionResult<IEnumerable<AuthorReadDTO>>> GetAllAuthors()
         {
             var authors = await authorService.GetAllAuthors();
-
             return Ok(authors);
         }
 
