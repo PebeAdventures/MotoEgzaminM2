@@ -17,7 +17,7 @@ var builder = WebApplication.CreateBuilder(args);
 var mapConfig = new AutoMapper.MapperConfiguration(c =>
 {
     c.AddProfile(new AuthorProfile());
-
+    c.AddProfile(new EduMaterialReviewProfile());
 });
 var logger = new LoggerConfiguration()
   .ReadFrom.Configuration(builder.Configuration)

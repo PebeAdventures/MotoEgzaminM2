@@ -27,6 +27,7 @@ namespace MotoEgzaminM2.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<EduMaterialReviewReadDTO>>> GetAllReviews()
         {
+
             var reviews = await eduMaterialReviewService.GetAllReviews();
 
             return Ok(reviews);
