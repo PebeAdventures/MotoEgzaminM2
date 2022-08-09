@@ -19,6 +19,7 @@ var mapConfig = new AutoMapper.MapperConfiguration(c =>
     c.AddProfile(new AuthorProfile());
     c.AddProfile(new EduMaterialReviewProfile());
     c.AddProfile(new EduMaterialProfile());
+    c.AddProfile(new EduMaterialTypeProfile());
 });
 var logger = new LoggerConfiguration()
   .ReadFrom.Configuration(builder.Configuration)

@@ -1,4 +1,5 @@
-﻿using MotoEgzaminM2.Data.Context;
+﻿using Microsoft.EntityFrameworkCore;
+using MotoEgzaminM2.Data.Context;
 using MotoEgzaminM2.Data.Entities;
 
 namespace MotoEgzaminM2.Data.DAL.Repositories
@@ -9,6 +10,10 @@ namespace MotoEgzaminM2.Data.DAL.Repositories
         public EduMaterialTypeRepository(MotoEgzaminM2Context context) : base(context)
         {
             _context = context;
+        }
+        public Task<List<EduMaterialType>> GetAllTypesAsync()
+        {
+            return _context.EduMaterialType.ToListAsync();
         }
     }
 }
