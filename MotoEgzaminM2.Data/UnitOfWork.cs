@@ -5,12 +5,13 @@ namespace MotoEgzaminM2.Data
 {
     public class UnitOfWork : IUnitOfWork
     {
-        public UnitOfWork(IEduMaterialRepository eduMaterials, IEduMaterialReviewRepository eduMaterialsReview, IEduMaterialTypeRepository eduMaterialsType, IAuthorRepository author)
+        public UnitOfWork(IEduMaterialRepository eduMaterials, IEduMaterialReviewRepository eduMaterialsReview, IEduMaterialTypeRepository eduMaterialsType, IAuthorRepository author, IUserRepository users)
         {
             EduMaterials = eduMaterials;
             EduMaterialsReview = eduMaterialsReview;
             EduMaterialsType = eduMaterialsType;
             Author = author;
+            Users = users;
         }
 
         public IEduMaterialRepository EduMaterials { get; }
@@ -20,5 +21,7 @@ namespace MotoEgzaminM2.Data
         public IEduMaterialTypeRepository EduMaterialsType { get; }
 
         public IAuthorRepository Author { get; }
+
+        public IUserRepository Users { get; }
     }
 }

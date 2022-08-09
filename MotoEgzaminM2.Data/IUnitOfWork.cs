@@ -9,5 +9,7 @@ namespace MotoEgzaminM2.Data
         IEduMaterialReviewRepository EduMaterialsReview { get; }
         IEduMaterialTypeRepository EduMaterialsType { get; }
         IAuthorRepository Author { get; }
+        IUserRepository Users { get; }
+
     }
 }

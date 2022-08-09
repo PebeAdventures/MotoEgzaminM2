@@ -9,6 +9,7 @@ namespace MotoEgzaminM2.Data.Context
         public DbSet<Author> Authors { get; set; }
         public DbSet<EduMaterialReview> EduMaterialReviews { get; set; }
         public DbSet<EduMaterialType> EduMaterialType { get; set; }
+        public DbSet<User> Users { get; set; }
 
         public MotoEgzaminM2Context(DbContextOptions<MotoEgzaminM2Context> options) : base(options)
         { }

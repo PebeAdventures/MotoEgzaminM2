@@ -47,6 +47,9 @@ builder.Services.AddScoped<IEduMaterialService, EduMaterialService>();
 builder.Services.AddScoped<IEduMaterialReviewService, EduMaterialReviewService>();
 builder.Services.AddScoped<IEduMaterialTypeService, EduMaterialTypeService>();
 builder.Services.AddScoped<IAuthorService, AuthorService>();
+builder.Services.AddScoped<IAdminService, AdminService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
