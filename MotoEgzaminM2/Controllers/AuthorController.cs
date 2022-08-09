@@ -6,7 +6,7 @@ using MotoEgzaminM2.Services.Interfaces;
 
 namespace MotoEgzaminM2.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/Authors")]
     [ApiController]
     public class AuthorController : ControllerBase
     {

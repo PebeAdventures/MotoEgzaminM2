@@ -6,7 +6,7 @@ using MotoEgzaminM2.Services.Interfaces;
 
 namespace MotoEgzaminM2.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/Materials")]
     [ApiController]
     public class EduMaterialController : ControllerBase
     {
@@ -30,22 +30,22 @@ namespace MotoEgzaminM2.Controllers
         }
 
         //ADMIN
-        // GET api/<EduMaterialController>/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<IEnumerable<EduMaterialReadDTO>>> GetMaterialByAuthorWithRate(int authorId)
+        // GET api/Authors/{id}/Materials"
+        [HttpGet("Authors{id}/getWithRateGreaterThan5")]
+        public async Task<ActionResult<IEnumerable<EduMaterialReadDTO>>> GetMaterialByAuthorWithRate(int id)
         {
-            var reviews = await eduMaterialService.GetAllMaterialsFromAuthorWithScoreAbove5(authorId);
+            var reviews = await eduMaterialService.GetAllMaterialsFromAuthorWithScoreAbove5(id);
 
 
             return Ok(reviews);
         }
 
         //ADMIN
-        // GET api/<EduMaterialController>/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<IEnumerable<EduMaterialReadDTO>>> GetMaterialsByType(int typeId)
+        // GET api/Types/{id}/Materials"
+        [HttpGet("Type/{id}")]
+        public async Task<ActionResult<IEnumerable<EduMaterialReadDTO>>> GetMaterialsByType(int id)
         {
-            var reviews = await eduMaterialService.GetAllMaterialsFromType(typeId);
+            var reviews = await eduMaterialService.GetAllMaterialsFromType(id);
 
 
             return Ok(reviews);
@@ -64,7 +64,7 @@ namespace MotoEgzaminM2.Controllers
         //ADMIN
         // POST api/<EduMaterialController>
         [HttpPost]
-        public async Task<IActionResult> CreateMaterial(int id, [FromBody] EduMaterialCreateDTO createDTO)
+        public async Task<IActionResult> CreateMaterial([FromBody] EduMaterialCreateDTO createDTO)
         {
             await eduMaterialService.CreateMaterial(createDTO);
             return NoContent();

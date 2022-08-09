@@ -5,7 +5,7 @@ using MotoEgzaminM2.Services.Interfaces;
 
 namespace MotoEgzaminM2.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/Types")]
     [ApiController]
     public class EduMaterialTypeController : ControllerBase
     {
