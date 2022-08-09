@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MotoEgzaminM2.DTO.EduMaterialReview;
 using MotoEgzaminM2.Services.Interfaces;
+using Swashbuckle.AspNetCore.Annotations;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -22,6 +23,7 @@ namespace MotoEgzaminM2.Controllers
         //ADMIN
         //USER
         // GET: api/<EdumaterialReviewController>
+        [SwaggerOperation(Summary = "Get all material reviews")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<EduMaterialReviewReadDTO>>> GetAllReviews()
         {
@@ -30,26 +32,22 @@ namespace MotoEgzaminM2.Controllers
             return Ok(reviews);
         }
 
-        // GET api/<EdumaterialReviewController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
 
         //ADMIN
         //USER
         // POST api/<EdumaterialReviewController>
         //Create new Review
-        [HttpPost]
-        public async Task<IActionResult> AddNewReview([FromBody] EduMaterialReviewCreateDTO reviewCreateDTO)
+        [SwaggerOperation(Summary = "Add new review to selected material")]
+        [HttpPost("{id}")]
+        public async Task<IActionResult> AddNewReview(int id, [FromBody] EduMaterialReviewCreateDTO reviewCreateDTO)
         {
-            await eduMaterialReviewService.CreateReview(reviewCreateDTO);
+            await eduMaterialReviewService.CreateReview(id, reviewCreateDTO);
             return NoContent();
         }
         //ADMIN
         //USER
         // PUT api/<EdumaterialReviewController>/5
+        [SwaggerOperation(Summary = "Edit specified Review")]
         [HttpPut("{id}")]
         public async Task<IActionResult> EditReview(int id, [FromBody] EduMaterialReviewUpdateDTO reviewUpdateDTO)
         {
@@ -59,6 +57,7 @@ namespace MotoEgzaminM2.Controllers
         }
         //ADMIN
         // DELETE api/<EdumaterialReviewController>/5
+        [SwaggerOperation(Summary = "Delete specific review")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteReview(int id)
         {

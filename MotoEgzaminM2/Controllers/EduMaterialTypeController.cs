@@ -20,6 +20,7 @@ namespace MotoEgzaminM2.Controllers
         }
 
         // GET: api/<EduMaterialTypeController>
+
         [HttpGet]
         public IEnumerable<string> Get()
         {

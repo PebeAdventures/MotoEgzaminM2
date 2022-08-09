@@ -37,7 +37,7 @@ builder.Services.AddScoped<IEduMaterialReviewService, EduMaterialReviewService>(
 builder.Services.AddScoped<IEduMaterialTypeService, EduMaterialTypeService>();
 builder.Services.AddScoped<IAuthorService, AuthorService>();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c => c.EnableAnnotations());
 
 var mapper = mapConfig.CreateMapper();
 builder.Services.AddSingleton(mapper);

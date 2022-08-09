@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MotoEgzaminM2.DTO.EduMaterial;
 using MotoEgzaminM2.Services.Interfaces;
+using Swashbuckle.AspNetCore.Annotations;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -23,6 +24,7 @@ namespace MotoEgzaminM2.Controllers
         //USER
         //ADMIN
         // GET: api/<EduMaterialController>
+        [SwaggerOperation(Summary = "Get all materials")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<EduMaterialReadDTO>>> GetAllMaterials()
         {
@@ -33,6 +35,7 @@ namespace MotoEgzaminM2.Controllers
 
         //ADMIN
         // GET api/Authors/{id}/Materials"
+        [SwaggerOperation(Summary = "Get materials from specific author, with material rate 5+")]
         [HttpGet("Authors{id}/getWithRateGreaterThan5")]
         public async Task<ActionResult<IEnumerable<EduMaterialReadDTO>>> GetMaterialByAuthorWithRate(int id)
         {
@@ -44,6 +47,7 @@ namespace MotoEgzaminM2.Controllers
 
         //ADMIN
         // GET api/Types/{id}/Materials"
+        [SwaggerOperation(Summary = "Get all materials from specific type")]
         [HttpGet("Type/{id}")]
         public async Task<ActionResult<IEnumerable<EduMaterialReadDTO>>> GetMaterialsByType(int id)
         {
@@ -55,6 +59,7 @@ namespace MotoEgzaminM2.Controllers
 
         //ADMIN
         // PUT api/<EduMaterialController>/5
+        [SwaggerOperation(Summary = "Update selected material")]
         [HttpPut("{id}")]
         public async Task<IActionResult> EditMaterial(int id, [FromBody] EduMaterialUpdateDTO materialUpdateDTO)
         {
@@ -65,6 +70,7 @@ namespace MotoEgzaminM2.Controllers
 
         //ADMIN
         // POST api/<EduMaterialController>
+        [SwaggerOperation(Summary = "Create new material")]
         [HttpPost]
         public async Task<IActionResult> CreateMaterial([FromBody] EduMaterialCreateDTO createDTO)
         {
@@ -73,6 +79,7 @@ namespace MotoEgzaminM2.Controllers
         }
 
         // DELETE api/<EduMaterialController>/5
+        [SwaggerOperation(Summary = "Delete material")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteMaterial(int id)
         {

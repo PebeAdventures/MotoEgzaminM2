@@ -14,7 +14,7 @@ namespace MotoEgzaminM2.Services
             _unitOfWork = unitOfWork;
         }
 
-        public Task CreateReview(EduMaterialReviewCreateDTO reviewCreateDTO)
+        public Task CreateReview(int id, EduMaterialReviewCreateDTO reviewCreateDTO)
         {
             throw new NotImplementedException();
         }

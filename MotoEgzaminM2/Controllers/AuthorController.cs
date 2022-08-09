@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MotoEgzaminM2.DTO.Author;
 using MotoEgzaminM2.Services.Interfaces;
+using Swashbuckle.AspNetCore.Annotations;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -23,8 +24,9 @@ namespace MotoEgzaminM2.Controllers
         //USER
         //ADMIN
         // GET: api/<AuthorController>
+        [SwaggerOperation(Summary = "Get all Authors with his material list")]
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<AuthorReadDTO>>> GetAllReviews()
+        public async Task<ActionResult<IEnumerable<AuthorReadDTO>>> GetAllAuthors()
         {
             var authors = await authorService.GetAllAuthors();
 
