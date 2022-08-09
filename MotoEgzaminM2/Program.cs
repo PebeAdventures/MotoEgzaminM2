@@ -3,11 +3,16 @@ using MotoEgzaminM2.Data;
 using MotoEgzaminM2.Data.Context;
 using MotoEgzaminM2.Data.DAL.Interfaces;
 using MotoEgzaminM2.Data.DAL.Repositories;
+using MotoEgzaminM2.Mapper;
 using MotoEgzaminM2.Services;
 using MotoEgzaminM2.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
+var mapConfig = new AutoMapper.MapperConfiguration(c =>
+{
+    c.AddProfile(new AuthorProfile());
 
+});
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -28,6 +33,8 @@ builder.Services.AddScoped<IAuthorService, AuthorService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+var mapper = mapConfig.CreateMapper();
+builder.Services.AddSingleton(mapper);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

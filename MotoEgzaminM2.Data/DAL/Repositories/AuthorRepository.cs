@@ -1,4 +1,5 @@
-﻿using MotoEgzaminM2.Data.Context;
+﻿using Microsoft.EntityFrameworkCore;
+using MotoEgzaminM2.Data.Context;
 using MotoEgzaminM2.Data.DAL.Interfaces;
 using MotoEgzaminM2.Data.Entities;
 
@@ -11,5 +12,8 @@ namespace MotoEgzaminM2.Data.DAL.Repositories
         {
             _context = context;
         }
+
+        public async Task<List<Author>> GetAllAuthorsAsync()
+        => await _context.Authors.Include(x => x.Materials).ToListAsync();
     }
 }
