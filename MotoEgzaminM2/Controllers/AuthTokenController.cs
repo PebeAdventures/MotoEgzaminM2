@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using Swashbuckle.AspNetCore.Annotations;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -22,6 +23,7 @@ namespace MotoEgzaminM2.Controllers
         {
             _configuration = configuration;
         }
+        [SwaggerOperation(Summary = "Get Token")]
         [HttpPost]
         public async Task<IActionResult> Post(string username, string pass)
         {

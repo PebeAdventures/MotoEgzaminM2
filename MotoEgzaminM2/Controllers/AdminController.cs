@@ -8,7 +8,7 @@ using Swashbuckle.AspNetCore.Annotations;
 namespace MotoEgzaminM2.Controllers
 {
     [EnableCors("corsapp")]
-    [Route("api/Admin")]
+    [Route("api/Admins")]
     [ApiController]
     public class AdminController : ControllerBase
     {

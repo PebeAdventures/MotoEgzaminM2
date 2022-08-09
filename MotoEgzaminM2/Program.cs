@@ -14,6 +14,9 @@ using Swashbuckle.AspNetCore.Filters;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Configuration
+    .SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("Secrets.json");
+
 var mapConfig = new AutoMapper.MapperConfiguration(c =>
 {
     c.AddProfile(new AuthorProfile());
@@ -25,20 +28,17 @@ var logger = new LoggerConfiguration()
   .ReadFrom.Configuration(builder.Configuration)
   .Enrich.FromLogContext()
   .CreateLogger();
-// Add services to the container.
+
 
 builder.Services.AddCors(p => p.AddPolicy("default", builder =>
 {
     builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
 }));
-
-
 builder.Logging.AddSerilog(logger);
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddDbContext<MotoEgzaminM2Context>(builder =>
-{
-    builder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=MotoEgzaminM2;Integrated Security=True");
-});
+
+builder.Services.AddDbContext<MotoEgzaminM2Context>(option =>
+    option.UseSqlServer(builder.Configuration.GetConnectionString("myConxStr")));
+
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IEduMaterialRepository, EduMaterialRepository>();
 builder.Services.AddScoped<IEduMaterialReviewRepository, EduMaterialReviewRepository>();
