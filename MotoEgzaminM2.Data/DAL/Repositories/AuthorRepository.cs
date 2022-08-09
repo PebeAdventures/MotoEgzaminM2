@@ -15,5 +15,9 @@ namespace MotoEgzaminM2.Data.DAL.Repositories
 
         public async Task<List<Author>> GetAllAuthorsAsync()
         => await _context.Authors.Include(x => x.Materials).ToListAsync();
+
+        public async Task<List<Author>> FindById(int AuthorId)
+    => await _context.Authors.Where(x => x.AuthorId == AuthorId).ToListAsync();
+
     }
 }

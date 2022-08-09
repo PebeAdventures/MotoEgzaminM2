@@ -40,9 +40,22 @@ namespace MotoEgzaminM2.Services
             return reviewDTO;
         }
 
-        public Task<IEnumerable<EduMaterialReadDTO>> GetAllMaterialsFromAuthorWithScoreAbove5(int authorId)
+        public async Task<IEnumerable<EduMaterialReadDTO>> GetAllMaterialsFromAuthorWithScoreAbove5(int authorId)
         {
-            throw new NotImplementedException();
+            var author = await _unitOfWork.Author.FindById(authorId);
+            if (author.Count() == 0)
+            {
+                throw new Exception(authorId + " not exists");
+            }
+            var materials = await _unitOfWork.EduMaterials.FindAllWithRankGreaterThan5(authorId);
+            List<EduMaterial> source = materials.ToList().Where(x =>
+                        {
+                            var reviews = x.eduMaterialReviews;
+                            var scoreSum = reviews.Select(x => x.ReviewScore).Sum();
+                            var amountOfReviews = Math.Max(1, reviews.Count());
+                            return (scoreSum / amountOfReviews) > 5;
+                        }).ToList();
+            return _mapper.Map<List<EduMaterial>, IEnumerable<EduMaterialReadDTO>>(source);
         }
 
         public Task<IEnumerable<EduMaterialReadDTO>> GetAllMaterialsFromType(int typeId)
