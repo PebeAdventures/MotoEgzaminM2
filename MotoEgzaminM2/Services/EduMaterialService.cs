@@ -35,12 +35,10 @@ namespace MotoEgzaminM2.Services
 
         public async Task<IEnumerable<EduMaterialReadDTO>> GetAllmaterials()
         {
-            var reviews = await _unitOfWork.EduMaterialsReview.GetAllReviewsAsync();
-            var reviewDTO = _mapper.Map<IEnumerable<EduMaterialReview>, IEnumerable<EduMaterialReadDTO>>(reviews.ToList());
-            return reviewDTO;
+            throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<EduMaterialReadDTO>> GetAllMaterialsFromAuthorWithScoreAbove5(int authorId)
+        public async Task<IEnumerable<EduMaterialWithRatedAuthorReadDTO>> GetAllMaterialsFromAuthorWithScoreAbove5(int authorId)
         {
             var author = await _unitOfWork.Author.FindById(authorId);
             if (author.Count() == 0)
@@ -55,7 +53,7 @@ namespace MotoEgzaminM2.Services
                             var amountOfReviews = Math.Max(1, reviews.Count());
                             return (scoreSum / amountOfReviews) > 5;
                         }).ToList();
-            return _mapper.Map<List<EduMaterial>, IEnumerable<EduMaterialReadDTO>>(source);
+            return _mapper.Map<List<EduMaterial>, List<EduMaterialWithRatedAuthorReadDTO>>(source);
         }
 
         public Task<IEnumerable<EduMaterialReadDTO>> GetAllMaterialsFromType(int typeId)

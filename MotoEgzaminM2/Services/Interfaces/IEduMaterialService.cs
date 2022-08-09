@@ -5,7 +5,7 @@ namespace MotoEgzaminM2.Services.Interfaces
     public interface IEduMaterialService
     {
         Task<IEnumerable<EduMaterialReadDTO>> GetAllmaterials();
-        Task<IEnumerable<EduMaterialReadDTO>> GetAllMaterialsFromAuthorWithScoreAbove5(int authorId);
+        Task<IEnumerable<EduMaterialWithRatedAuthorReadDTO>> GetAllMaterialsFromAuthorWithScoreAbove5(int authorId);
         Task<IEnumerable<EduMaterialReadDTO>> GetAllMaterialsFromType(int typeId);
         Task DeleteMaterial(int id);
         Task CreateMaterial(EduMaterialCreateDTO createDTO);

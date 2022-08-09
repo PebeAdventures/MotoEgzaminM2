@@ -37,7 +37,7 @@ namespace MotoEgzaminM2.Controllers
         // GET api/Authors/{id}/Materials"
         [SwaggerOperation(Summary = "Get materials from specific author, with material rate 5+")]
         [HttpGet("Authors/{id}/getWithRateGreaterThan5")]
-        public async Task<ActionResult<IEnumerable<EduMaterialReadDTO>>> GetMaterialByAuthorWithRate(int id)
+        public async Task<ActionResult<IEnumerable<EduMaterialWithRatedAuthorReadDTO>>> GetMaterialByAuthorWithRate(int id)
         {
             var reviews = await eduMaterialService.GetAllMaterialsFromAuthorWithScoreAbove5(id);
 

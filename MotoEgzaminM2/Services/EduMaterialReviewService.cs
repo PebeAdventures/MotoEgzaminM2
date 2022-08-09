@@ -31,7 +31,9 @@ namespace MotoEgzaminM2.Services
 
         public Task<IEnumerable<EduMaterialReviewReadDTO>> GetAllReviews()
         {
-            var reviewList = new List<EduMaterialReviewReadDTO>();
+            /* var reviews = await _unitOfWork.EduMaterialsReview.GetAllReviewsAsync();
+             var reviewDTO = _mapper.Map<IEnumerable<EduMaterialReview>, IEnumerable<EduMaterialReadDTO>>(reviews.ToList());
+             return reviewDTO;*/
 
             return null;
         }
