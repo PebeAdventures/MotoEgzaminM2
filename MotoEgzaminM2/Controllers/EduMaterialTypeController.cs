@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using MotoEgzaminM2.Services.Interfaces;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace MotoEgzaminM2.Controllers
 {
+    [EnableCors("corsapp")]
     [Route("api/Types")]
     [ApiController]
     public class EduMaterialTypeController : ControllerBase

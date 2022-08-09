@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using MotoEgzaminM2.DTO.EduMaterial;
 using MotoEgzaminM2.Services.Interfaces;
 
@@ -6,6 +7,7 @@ using MotoEgzaminM2.Services.Interfaces;
 
 namespace MotoEgzaminM2.Controllers
 {
+    [EnableCors("corsapp")]
     [Route("api/Materials")]
     [ApiController]
     public class EduMaterialController : ControllerBase

@@ -15,7 +15,13 @@ var mapConfig = new AutoMapper.MapperConfiguration(c =>
 });
 // Add services to the container.
 
+builder.Services.AddCors(p => p.AddPolicy("default", builder =>
+{
+    builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+}));
+
 builder.Services.AddControllers();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddDbContext<MotoEgzaminM2Context>(builder =>
 {
@@ -45,7 +51,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseCors("corsapp");
 app.UseAuthorization();
 
 app.MapControllers();
