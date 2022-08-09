@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Cors;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using MotoEgzaminM2.DTO.EduMaterialType;
 using MotoEgzaminM2.Services.Interfaces;
@@ -21,8 +22,7 @@ namespace MotoEgzaminM2.Controllers
         }
 
         // GET: api/<EduMaterialTypeController>
-
-        [HttpGet]
+        [HttpGet, Authorize(Roles = "User")]
         public async Task<ActionResult<List<EduMaterialTypeDTO>>> Get(string? name)
         {
             if (name != null)

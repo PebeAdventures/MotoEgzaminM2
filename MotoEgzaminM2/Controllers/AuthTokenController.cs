@@ -26,7 +26,7 @@ namespace MotoEgzaminM2.Controllers
         public async Task<IActionResult> Post(string username, string pass)
         {
 
-            //username == adminLogin && adminPassword == pass
+
 
             bool userIsAdmin = username == adminLogin && adminPassword == pass;
             bool userIsUser = username == userLogin && userPassword == pass;

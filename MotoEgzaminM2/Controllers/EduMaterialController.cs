@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Cors;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using MotoEgzaminM2.DTO.EduMaterial;
 using MotoEgzaminM2.Services.Interfaces;
@@ -21,11 +22,10 @@ namespace MotoEgzaminM2.Controllers
         }
 
 
-        //USER
-        //ADMIN
+
         // GET: api/<EduMaterialController>
         [SwaggerOperation(Summary = "Get all materials")]
-        [HttpGet]
+        [HttpGet, Authorize(Roles = "Admin,User")]
         public async Task<ActionResult<IEnumerable<EduMaterialReadDTO>>> GetAllMaterials()
         {
             var materials = await eduMaterialService.GetAllmaterials();
@@ -33,10 +33,10 @@ namespace MotoEgzaminM2.Controllers
             return Ok(materials);
         }
 
-        //ADMIN
+
         // GET api/Authors/{id}/Materials"
         [SwaggerOperation(Summary = "Get materials from specific author, with material rate 5+")]
-        [HttpGet("Authors/{id}/getWithRateGreaterThan5")]
+        [HttpGet("Authors/{id}/getWithRateGreaterThan5"), Authorize(Roles = "Admin")]
         public async Task<ActionResult<IEnumerable<EduMaterialWithRatedAuthorReadDTO>>> GetMaterialByAuthorWithRate(int id)
         {
             var reviews = await eduMaterialService.GetAllMaterialsFromAuthorWithScoreAbove5(id);
@@ -45,10 +45,10 @@ namespace MotoEgzaminM2.Controllers
             return Ok(reviews);
         }
 
-        //ADMIN
+
         // GET api/Types/{id}/Materials"
         [SwaggerOperation(Summary = "Get all materials from specific type")]
-        [HttpGet("Type/{id}")]
+        [HttpGet("Type/{id}"), Authorize(Roles = "Admin")]
         public async Task<ActionResult<IEnumerable<EduMaterialReadDTO>>> GetMaterialsByType(int id)
         {
             var reviews = await eduMaterialService.GetAllMaterialsFromType(id);
@@ -57,10 +57,10 @@ namespace MotoEgzaminM2.Controllers
             return Ok(reviews);
         }
 
-        //ADMIN
+
         // PUT api/<EduMaterialController>/5
         [SwaggerOperation(Summary = "Update selected material")]
-        [HttpPut("{id}")]
+        [HttpPut("{id}"), Authorize(Roles = "Admin")]
         public async Task<IActionResult> EditMaterial(int id, [FromBody] EduMaterialUpdateDTO materialUpdateDTO)
         {
             await eduMaterialService.EditMaterial(id, materialUpdateDTO);
@@ -68,10 +68,10 @@ namespace MotoEgzaminM2.Controllers
 
         }
 
-        //ADMIN
+
         // POST api/<EduMaterialController>
         [SwaggerOperation(Summary = "Create new material")]
-        [HttpPost]
+        [HttpPost, Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateMaterial([FromBody] EduMaterialCreateDTO createDTO)
         {
             await eduMaterialService.CreateMaterial(createDTO);
@@ -80,7 +80,7 @@ namespace MotoEgzaminM2.Controllers
 
         // DELETE api/<EduMaterialController>/5
         [SwaggerOperation(Summary = "Delete material")]
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}"), Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteMaterial(int id)
         {
             await eduMaterialService.DeleteMaterial(id);

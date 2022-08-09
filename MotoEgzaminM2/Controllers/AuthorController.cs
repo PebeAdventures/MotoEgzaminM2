@@ -26,7 +26,7 @@ namespace MotoEgzaminM2.Controllers
         //ADMIN
         // GET: api/<AuthorController>
         [SwaggerOperation(Summary = "Get all Authors with his material list")]
-        [HttpGet, Authorize(Roles = "Admin")]
+        [HttpGet, Authorize(Roles = "Admin,User")]
         public async Task<ActionResult<IEnumerable<AuthorReadDTO>>> GetAllAuthors()
         {
             var authors = await authorService.GetAllAuthors();

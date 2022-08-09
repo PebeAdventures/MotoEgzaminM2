@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Cors;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using MotoEgzaminM2.DTO.Admin;
 using MotoEgzaminM2.Services.Interfaces;
@@ -17,9 +18,9 @@ namespace MotoEgzaminM2.Controllers
         {
             Service = service;
         }
-        // Authorize(Roles = "Admin")]
+
         [SwaggerOperation(Summary = "Register a new Admin")]
-        [HttpPost]
+        [HttpPost, Authorize(Roles = "Admin")]
         public async Task<ActionResult> RegisterNewAdmin([FromBody] AdminCreateDTO request)
         {
             try
